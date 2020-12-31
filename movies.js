@@ -6,6 +6,15 @@ router.get('/',(req,res)=>{
    res.render('form.ejs')
 })
 
+router.get('/allMovies',async (req,res)=>{
+   try{
+      const movies = await Movie.find()
+      res.send(movies)
+   }catch(e){
+      console.error(e)
+   }
+})
+
 router.get('/redirect',(req,res)=>{
    res.send('Check the atlas to see posted data.')
 })
